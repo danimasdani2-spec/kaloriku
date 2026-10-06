@@ -43,7 +43,18 @@ Untuk akses dari HP lain: gunakan `ngrok http 8000`, atau upload ke hosting (cPa
 | `manifest.json` | Konfigurasi PWA |
 | `sw.js` | Service worker (offline + update) |
 | `version.json` | Nomor versi untuk cek update otomatis |
-| `icon-192.png` / `icon-512.png` | Ikon aplikasi |
+| `icon-192.png` / `icon-512.png` | Ikon aplikasi (dibuat dari file `.b64` di bawah) |
+| `icon-192.png.b64` / `icon-512.png.b64` | Ikon dalam format base64 |
+
+### Mengembalikan ikon
+
+File biner tidak bisa di-upload via API, jadi ikon disimpan sebagai base64.
+Untuk mendapatkan kembali file PNG-nya:
+
+```bash
+base64 -d icon-192.png.b64 > icon-192.png
+base64 -d icon-512.png.b64 > icon-512.png
+```
 | `CARA-PAKAI.txt` | Panduan pemakaian (Indonesia) |
 
 ## Lisensi
