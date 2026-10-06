@@ -1,0 +1,64 @@
+CARA PAKAI — Calorie Scanner (versi web, file sendiri)
+=====================================================
+
+Aplikasi ini file HTML biasa. Tidak perlu install. Jalan di semua HP
+via browser (Chrome/Safari). Data tersimpan di browser HP masing-masing.
+
+1. JALANKAN DI KOMPUTER / HP
+----------------------------
+Paling gampang: copy folder ini ke HP, buka file index.html langsung
+di browser Chrome. Izin kamera/galeri akan diminta saat dipakai.
+
+Alternatif (akses dari banyak HP dalam satu WiFi / internet):
+  - Di komputer: jalankan  python -m http.server 8000  di folder ini
+  - Di HP lain (satu WiFi): buka http://IP-KOMPUTER:8000
+  - Via internet: jalankan  ngrok http 8000 , buka URL ngrok di HP mana pun
+
+2. ISI API KEY (menu Pengaturan ⚙️)
+----------------------------------
+- Gemini: ambil gratis di https://aistudio.google.com/app/apikey
+  Bisa isi sampai 3 key. Jika key 1 habis kuotanya / error,
+  otomatis pindah ke key 2, lalu key 3.
+- Groq (cadangan): daftar gratis di https://console.groq.com/keys
+  Dipakai otomatis jika semua key Gemini gagal.
+- Key tersimpan HANYA di browser HP itu, tidak dikirim ke mana pun
+  selain API resmi Google/Groq.
+
+  PENTING: API key yang pernah dikirim via chat sudah terpapar —
+  hapus/revoke di AI Studio, lalu buat key baru untuk diisi di sini.
+
+3. PAKAI
+--------
+- Tab Scan: pilih Kamera atau Galeri → foto piring → Analisis Kalori
+  → hasil keluar (kalori, protein, karbo, lemak, natrium, rincian
+  tiap makanan) → Simpan ke Riwayat.
+- Tab Progres (baru): isi profil (berat, target, tinggi, usia, aktivitas)
+  di Pengaturan → keluar rekomendasi kalori harian otomatis untuk capai
+  target (±0,5 kg/minggu). Ada grafik berat badan + grafik kalori 7 hari,
+  dan sisa kalori hari ini.
+- Tab Riwayat: total kalori hari ini + daftar makanan. Tombol Backup
+  mengunduh file JSON; tombol Import memulihkan dari file backup
+  (untuk pindah HP).
+
+4. PINDAH HP
+------------
+Di HP lama: Riwayat → Backup → simpan file JSON.
+Di HP baru: buka aplikasi → Riwayat → Import → pilih file backup.
+Isi ulang API key di Pengaturan (key tidak ikut ter-backup? ikut —
+file backup berisi key juga; simpan file backup di tempat aman).
+
+5. INSTALL KE HP (jadi seperti aplikasi)
+----------------------------------------
+Syarat: buka via https (ngrok) atau http://localhost — bukan file://.
+
+- Android (Chrome): buka link aplikasinya → akan muncul tombol
+  "⬇️ Install Aplikasi ke HP" di bagian bawah. Atau menu ⋮ →
+  "Add to Home screen" / "Install app".
+- iPhone (Safari): Share → "Add to Home Screen".
+- Setelah itu ikon Calorie Scanner muncul di layar utama dan bisa
+  dibuka seperti aplikasi biasa, bahkan offline.
+
+Isi paket: index.html, manifest.json, sw.js, icon-192.png,
+icon-512.png, CARA-PAKAI.txt — semua harus satu folder saat dijalankan.
+
+Catatan: hasil analisis bersifat estimasi, bukan pengukuran medis.
